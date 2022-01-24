@@ -46,7 +46,7 @@
         }
       ],
       "memory": 512,
-      "image": "",
+      "image": "818389806458.dkr.ecr.us-east-1.amazonaws.com/ecr_image:latest",
       "healthCheck": {
         "retries": 3,
         "command": [
