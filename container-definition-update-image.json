@@ -1,63 +1,33 @@
-[
-    {
-      "logConfiguration": {
-        "logDriver": "awslogs",
-        "options": {
-          "awslogs-group": "ch-dev-log-group",
-          "awslogs-region": "eu-west-1",
-          "awslogs-stream-prefix": "ecs"
+{
+    "family": "sample-fargate", 
+    "runtimePlatform": {
+        "operatingSystemFamily": "LINUX"
+    },
+    "networkMode": "awsvpc", 
+    "containerDefinitions": [
+        {
+            "name": "fargate-app", 
+            "image": "818389806458.dkr.ecr.us-east-1.amazonaws.com/ecr_image:latest", 
+            "portMappings": [
+                {
+                    "containerPort": 80, 
+                    "hostPort": 80, 
+                    "protocol": "tcp"
+                }
+            ], 
+            "essential": true, 
+            "entryPoint": [
+                "sh",
+		"-c"
+            ], 
+            "command": [
+                "/bin/sh -c \"echo '<html> <head> <title>Amazon ECS Sample App</title> <style>body {margin-top: 40px; background-color: #333;} </style> </head><body> <div style=color:white;text-align:center> <h1>Amazon ECS Sample App</h1> <h2>Congratulations!</h2> <p>Your application is now running on a container in Amazon ECS.</p> </div></body></html>' >  /usr/local/apache2/htdocs/index.html && httpd-foreground\""
+            ]
         }
-      },
-      "portMappings": [
-        {
-          "hostPort": 8080,
-          "protocol": "tcp",
-          "containerPort": 8080
-        },
-        {
-          "hostPort": 8081,
-          "protocol": "tcp",
-          "containerPort": 8081
-        }
-      ],
-      "cpu": 256,
-      "environment": [
-        {
-          "name": "MANAGEMENT_SERVER_PORT",
-          "value": "8081"
-        },
-        {
-          "name": "SERVER_PORT",
-          "value": "8080"
-        }
-      ],
-      "secrets": [
-        {
-          "valueFrom": "ch-dev-user-db-url",
-          "name": "SPRING_DATASOURCE_URL"
-        },
-        {
-          "valueFrom": "ch-dev-user-db-username",
-          "name": "SPRING_DATASOURCE_USERNAME"
-        },
-        {
-          "valueFrom": "ch-dev-user-db-password",
-          "name": "SPRING_DATASOURCE_PASSWORD"
-        }
-      ],
-      "memory": 512,
-      "image": "818389806458.dkr.ecr.us-east-1.amazonaws.com/ecr_image:latest",
-      "healthCheck": {
-        "retries": 3,
-        "command": [
-          "CMD-SHELL",
-          "curl -f http://localhost:8081/actuator/health || exit 1"
-        ],
-        "timeout": 5,
-        "interval": 30,
-        "startPeriod": 60
-      },
-      "essential": true,
-      "name": "userApi"
-    }
-]
+    ], 
+    "requiresCompatibilities": [
+        "FARGATE"
+    ], 
+    "cpu": "256", 
+    "memory": "512"
+}
