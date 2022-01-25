@@ -44,10 +44,8 @@
     "networkMode": "awsvpc",
     "memory": "512",
     "cpu": "256",
-    "executionRoleArn": "arn:aws:iam::818389806458:role/myEcsTaskExecutionRole",
     "tags": [],
     "family": "tets",
-    "taskRoleArn": "arn:aws:iam::818389806458:role/myEcsTaskExecutionRole",
     "runtimePlatform": {
         "operatingSystemFamily": "LINUX"
     }
