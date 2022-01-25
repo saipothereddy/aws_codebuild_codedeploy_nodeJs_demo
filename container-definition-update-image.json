@@ -1,17 +1,20 @@
 {
-	"containerDefinitions": [{
-		"name": "sleep",
-		"image": "818389806458.dkr.ecr.us-east-1.amazonaws.com/ecr_image:latest",
-		"cpu": 10,
-		"command": [
-			"sleep",
-			"360"
-		],
-		"memory": 10,
-		"essential": true
-	}],
-	"family": "sleep360",
-	"requiresCompatibilities": [
-		"FARGATE"
-	]
+    "containerDefinitions": [
+        {
+            "name": "sleep",
+            "image": "818389806458.dkr.ecr.us-east-1.amazonaws.com/ecr_image:latest",
+            "cpu": 10,
+            "command": [
+                "sleep",
+                "360"
+            ],
+            "memory": 10,
+            "essential": true
+        }
+    ],
+    "family": "sleep360",
+     "networkMode": "awsvpc",
+    "requiresCompatibilities": [
+            "FARGATE"
+        ] 
 }
