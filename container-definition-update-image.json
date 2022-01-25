@@ -1,49 +1,30 @@
 {
-    "taskDefinition": {
-        "status": "ACTIVE", 
-        "memory": "128", 
-        "networkMode": "bridge", 
-        "family": "xxx", 
-        "placementConstraints": [], 
-        "requiresAttributes": [
-            {
-                "name": "ecs.capability.execution-role-ecr-pull"
-            }, 
-            {
-                "name": "com.amazonaws.ecs.capability.ecr-auth"
-            }, 
-            {
-                "name": "com.amazonaws.ecs.capability.task-iam-role"
-            }
-        ], 
-        "cpu": "128", 
-        "executionRoleArn": "arn:aws:iam::818389806458:role/ecsdeplay", 
-        "compatibilities": [
-            "EC2"
-        ], 
-        "volumes": [], 
+    "family": "web-timer",
+    "containerDefinitions": [
+        {
+            "name": "web",
+            "image": "818389806458.dkr.ecr.us-east-1.amazonaws.com/ecr_image:latest",
+            "cpu": 99,
+            "memory": 100,
+            "portMappings": [
+                {
+                    "containerPort": 80,
+                    "hostPort": 80
+                }
+            ],
+            "essential": true,
+            "mountPoints": [],
+        },
         "requiresCompatibilities": [
             "FARGATE"
-        ], 
-        "taskRoleArn": "arn:aws:iam::818389806458:role/ecsdeplay", 
-        "containerDefinitions": [
-            {
-                "environment": [], 
-                "name": "some-container-name", 
-                "mountPoints": [], 
-                "image": "818389806458.dkr.ecr.us-east-1.amazonaws.com/ecr_image:latest", 
-                "cpu": 128, 
-                "portMappings": [
-                    {
-                        "protocol": "tcp", 
-                        "containerPort": 3000, 
-                        "hostPort": 3000
-                    }
-                ], 
-                "memory": 128, 
-                "essential": true, 
-                "volumesFrom": []
+        ] 
+    ],
+    "volumes": [
+        {
+            "name": "webdata", 
+            "host": {
+                "sourcePath": "/ecs/webdata"
             }
-        ]
-    }
+        }
+    ]
 }
