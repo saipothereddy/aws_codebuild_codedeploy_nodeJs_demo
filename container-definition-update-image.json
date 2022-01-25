@@ -1,20 +1,17 @@
 {
-	"family": "web-timer",
 	"containerDefinitions": [{
-		"name": "web",
+		"name": "sleep",
 		"image": "818389806458.dkr.ecr.us-east-1.amazonaws.com/ecr_image:latest",
-		"cpu": 99,
-		"memory": 100,
-		"portMappings": [{
-			"containerPort": 80,
-			"hostPort": 80
-		}]
+		"cpu": 10,
+		"command": [
+			"sleep",
+			"360"
+		],
+		"memory": 10,
+		"essential": true
 	}],
-	"essential": true,
-	"mountPoints": [],
+	"family": "sleep360",
 	"requiresCompatibilities": [
 		"FARGATE"
-
 	]
-
 }
