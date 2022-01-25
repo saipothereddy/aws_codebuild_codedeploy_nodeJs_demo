@@ -1,8 +1,14 @@
-FROM nginx:1.15.8
+FROM ubuntu:16.04
 
-ADD static/fruit.json /usr/share/nginx/html/fruit.json
-ADD nginx.conf /etc/nginx/nginx.conf
+MAINTAINER Chris Fidao
+
+RUN apt-get update \
+    && apt-get install -y nginx \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
+    && echo "daemon off;" >> /etc/nginx/nginx.conf
+
+ADD default /etc/nginx/sites-available/default
 
 EXPOSE 80
-
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["nginx"]
