@@ -5,7 +5,7 @@
     "inferenceAccelerators": [],
     "containerDefinitions": [
         {
-            "name": "nginx",
+            "name": "test",
             "image": "818389806458.dkr.ecr.us-east-1.amazonaws.com/ecr_image:latest",
             "resourceRequirements": null,
             "essential": true,
@@ -27,7 +27,7 @@
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
-                    "awslogs-group": "/ecs/tets",
+                    "awslogs-group": "/ecs/xxx",
                     "awslogs-region": "us-east-1",
                     "awslogs-stream-prefix": "ecs"
                 }
@@ -44,9 +44,11 @@
     "networkMode": "awsvpc",
     "memory": "512",
     "cpu": "256",
-    "tags": [],
-    "family": "tets",
+    "executionRoleArn": "arn:aws:iam::818389806458:role/ecsdeplay",
+    "family": "xxx",
+    "taskRoleArn": "arn:aws:iam::818389806458:role/ecsdeplay",
     "runtimePlatform": {
         "operatingSystemFamily": "LINUX"
-    }
+    },
+    "tags": []
 }
