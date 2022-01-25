@@ -1,5 +1,5 @@
 {
-    "family": "xxx",
+    "family": "web-timer",
     "containerDefinitions": [
         {
             "name": "web",
@@ -19,12 +19,5 @@
             "FARGATE"
         ] 
     ],
-    "volumes": [
-        {
-            "name": "webdata", 
-            "host": {
-                "sourcePath": "/ecs/webdata"
-            }
-        }
-    ]
+    "volumes": []
 }
