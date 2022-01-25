@@ -1,4 +1,4 @@
-FROM ubuntu:latest
-Run apt update 
-Run apt insatll nginx -y
-EXPOSE 80
+FROM nginx
+RUN rm /etc/nginx/conf.d/default.conf
+COPY content /usr/share/nginx/html
+COPY conf /etc/nginx
