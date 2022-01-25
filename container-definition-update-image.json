@@ -1,54 +1,27 @@
 {
-    "requiresCompatibilities": [
-        "FARGATE"
-    ],
-    "inferenceAccelerators": [],
-    "containerDefinitions": [
-        {
-            "name": "test",
-            "image": "818389806458.dkr.ecr.us-east-1.amazonaws.com/ecr_image:latest",
-            "resourceRequirements": null,
-            "essential": true,
-            "portMappings": [
-                {
-                    "containerPort": "80",
-                    "protocol": "tcp"
-                }
-            ],
-            "environment": null,
-            "environmentFiles": [],
-            "secrets": null,
-            "mountPoints": null,
-            "volumesFrom": null,
-            "hostname": null,
-            "user": null,
-            "workingDirectory": null,
-            "extraHosts": null,
-            "logConfiguration": {
-                "logDriver": "awslogs",
-                "options": {
-                    "awslogs-group": "/ecs/xxx",
-                    "awslogs-region": "us-east-1",
-                    "awslogs-stream-prefix": "ecs"
-                }
-            },
-            "ulimits": null,
-            "dockerLabels": null,
-            "dependsOn": null,
-            "repositoryCredentials": {
-                "credentialsParameter": ""
-            }
-        }
-    ],
-    "volumes": [],
-    "networkMode": "awsvpc",
-    "memory": "512",
-    "cpu": "256",
-    "executionRoleArn": "arn:aws:iam::818389806458:role/ecsdeplay",
-    "family": "xxx",
-    "taskRoleArn": "arn:aws:iam::818389806458:role/ecsdeplay",
-    "runtimePlatform": {
-        "operatingSystemFamily": "LINUX"
-    },
-    "tags": []
+	"requiresCompatibilities": [
+		"FARGATE"
+	],
+	"inferenceAccelerators": [],
+	"containerDefinitions": [{
+		"name": "test",
+		"image": "818389806458.dkr.ecr.us-east-1.amazonaws.com/ecr_image:latest",
+		"resourceRequirements": null,
+		"essential": true,
+		"portMappings": [{
+			"containerPort": "80",
+			"protocol": "tcp"
+		}]
+	}],
+	"volumes": [],
+	"networkMode": "awsvpc",
+	"memory": "512",
+	"cpu": "256",
+	"executionRoleArn": "arn:aws:iam::818389806458:role/ecsdeplay",
+	"family": "xxx",
+	"taskRoleArn": "arn:aws:iam::818389806458:role/ecsdeplay",
+	"runtimePlatform": {
+		"operatingSystemFamily": "LINUX"
+	},
+	"tags": []
 }
