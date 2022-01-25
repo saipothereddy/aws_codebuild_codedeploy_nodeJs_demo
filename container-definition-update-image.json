@@ -1,23 +1,20 @@
 {
-    "family": "web-timer",
-    "containerDefinitions": [
-        {
-            "name": "web",
-            "image": "818389806458.dkr.ecr.us-east-1.amazonaws.com/ecr_image:latest",
-            "cpu": 99,
-            "memory": 100,
-            "portMappings": [
-                {
-                    "containerPort": 80,
-                    "hostPort": 80
-                }
-            ],
-            "essential": true,
-            "mountPoints": [],
-        },
-        "requiresCompatibilities": [
-            "FARGATE"
-        ] 
-    ],
-    "volumes": []
+	"family": "web-timer",
+	"containerDefinitions": [{
+		"name": "web",
+		"image": "818389806458.dkr.ecr.us-east-1.amazonaws.com/ecr_image:latest",
+		"cpu": 99,
+		"memory": 100,
+		"portMappings": [{
+			"containerPort": 80,
+			"hostPort": 80
+		}]
+	}],
+	"essential": true,
+	"mountPoints": [],
+	"requiresCompatibilities": [
+		"FARGATE"
+
+	]
+
 }
